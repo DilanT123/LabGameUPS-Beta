@@ -20,7 +20,7 @@ public class ControladorPopUp : NetworkBehaviour
     private void Start()
     {
         botonCompletarTarea?.onClick.AddListener(CompletarTarea);
-        OcultarPopUp(); // Inicia con el popup oculto
+        OcultarPopUp(); 
         localDatabaseManager = FindObjectOfType<LocalDatabaseManager>();
         if (localDatabaseManager == null)
         {
@@ -40,6 +40,7 @@ public class ControladorPopUp : NetworkBehaviour
         if (question != null)
         {
             SetupQuestionUI(question);
+            
         }
         else
         {
@@ -148,17 +149,12 @@ public class ControladorPopUp : NetworkBehaviour
         // Cambiar el color del texto del botón correcto a verde
         if (correctButton != null)
         {
-            var answerTextTransform = correctButton.transform.Find("answer" + (correctIndex + 1) + "Text");
-
-            if (answerTextTransform != null)
+            var correctTextTransform = correctButton.transform.Find("answer" + (correctIndex + 1) + "Text");
+            var correctText = correctTextTransform?.GetComponent<TextMeshProUGUI>();
+            // Si la respuesta es correcta, cambiar a verde
+            if (isCorrect && correctText != null)
             {
-                var answerText = answerTextTransform.GetComponent<TextMeshProUGUI>();
-
-                // Si la respuesta es correcta, cambiar a verde
-                if (isCorrect && answerText != null)
-                {
-                    answerText.color = Color.green; // Cambia el color del texto a verde
-                }
+                correctText.color = Color.green; // Cambia el color del texto a verde
             }
         }
 
@@ -175,13 +171,28 @@ public class ControladorPopUp : NetworkBehaviour
             }
         }
 
-        if (isLocalPlayer)
-        {
-            CmdSendAnswer(isCorrect);
-        }
+        // Desactivar todos los botones después de seleccionar una respuesta
+        DisableAnswerButtons(); // Desactivar botones
 
-        // Iniciar la coroutine para ocultar el popup
-        StartCoroutine(RestoreButtonColorsAndHide());
+        //Si la respuesta es correcta, se completa la tarea y se cierra el popup
+        if (isCorrect)
+        {
+            if (isLocalPlayer)
+            {
+                CmdSendAnswer(isCorrect);
+            }
+
+            // Completar la tarea si la respuesta es correcta
+            CompletarTarea();
+
+            // Se inicia una corrutina para ocultar el popup
+            StartCoroutine(RestoreButtonColorsAndHide());
+        }
+        else
+        {
+            // Para respuestas incorrectas, también ocultamos el popup, puedes modificar esto si quieres esperar más
+            StartCoroutine(RestoreButtonColorsAndHide());
+        }
     }
 
     [Command]
@@ -224,6 +235,8 @@ public class ControladorPopUp : NetworkBehaviour
         currentTaskType = null;
         currentTaskData = null;
         SetSectionsActive(false);
+        EnableAnswerButtons(); // Habilitar botones al ocultar el popup
+
     }
 
     private IEnumerator RestoreButtonColorsAndHide()
@@ -250,7 +263,6 @@ public class ControladorPopUp : NetworkBehaviour
 
         OcultarPopUp();
     }
-
     private void SetSectionsActive(bool active)
     {
         multipleChoiceSection.SetActive(active);
@@ -262,6 +274,7 @@ public class ControladorPopUp : NetworkBehaviour
     {
         var textComponent = section.transform.Find(childName)?.GetComponent<TextMeshProUGUI>();
         if (textComponent != null) textComponent.text = text;
+        else Debug.LogError($"No se encontró el componente TextMeshProUGUI en {childName}.");
     }
 
     internal void ShowTaskPopup(SyncVarPlayers playerSyncVar, string taskType, string taskData)
@@ -274,4 +287,31 @@ public class ControladorPopUp : NetworkBehaviour
     {
         OcultarPopUp();
     }
+
+    private void DisableAnswerButtons()
+    {
+        var answerTransform = multipleChoiceSection.transform.Find("Answers");
+        if (answerTransform != null)
+        {
+            var answerButtons = answerTransform.GetComponentsInChildren<Button>();
+            foreach (var button in answerButtons)
+            {
+                button.interactable = false; // Desactiva todos los botones
+            }
+        }
+    }
+
+    private void EnableAnswerButtons()
+    {
+        var answerTransform = multipleChoiceSection.transform.Find("Answers");
+        if (answerTransform != null)
+        {
+            var answerButtons = answerTransform.GetComponentsInChildren<Button>();
+            foreach (var button in answerButtons)
+            {
+                button.interactable = true; // Habilita todos los botones
+            }
+        }
+    }
+
 }
