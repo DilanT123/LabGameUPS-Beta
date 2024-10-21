@@ -190,7 +190,7 @@ public class ControladorPopUp : NetworkBehaviour
         }
         else
         {
-            // Para respuestas incorrectas, también ocultamos el popup, puedes modificar esto si quieres esperar más
+            // Para respuestas incorrectas, también ocultamos el popup
             StartCoroutine(RestoreButtonColorsAndHide());
         }
     }
@@ -203,14 +203,12 @@ public class ControladorPopUp : NetworkBehaviour
 
     public void SetupMatchingTask(Question question)
     {
-        // Implementa la lógica para configurar la tarea de emparejamiento aquí
         SetText(matchingSection, "Term1Text1", "Término 1");
         SetText(matchingSection, "Term2Text1", "Emparejar 1");
     }
 
     public void SetupSequenceTask(Question question)
     {
-        // Implementa la lógica para configurar la tarea de secuencia aquí
         var stepTexts = sequenceSection.GetComponentsInChildren<TextMeshProUGUI>();
         for (int i = 0; i < stepTexts.Length; i++)
             stepTexts[i].text = $"Paso {i + 1}";
