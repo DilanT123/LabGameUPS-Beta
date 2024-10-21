@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameLobbyMenuUI : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class GameLobbyMenuUI : MonoBehaviour
         {
             NetworkManager.singleton.StopClient();
         }
+
+        // Carga la escena del menú principal
+        SceneManager.LoadScene("MainMenu");
     }
 
 

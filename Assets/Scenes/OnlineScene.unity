@@ -240,8 +240,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 76332446}
-  - {fileID: 733149655}
   - {fileID: 1537660881}
+  - {fileID: 733149655}
   - {fileID: 1811326032}
   - {fileID: 1793412148}
   - {fileID: 1633722394}
@@ -464,9 +464,10 @@ GameObject:
   - component: {fileID: 169125490}
   - component: {fileID: 169125492}
   - component: {fileID: 169125491}
+  - component: {fileID: 169125493}
   m_Layer: 0
   m_Name: TaskPoint (18)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -498,6 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &169125492
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -533,6 +538,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &169125493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169125489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 164781370
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &172198466
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,9 +681,10 @@ GameObject:
   - component: {fileID: 281393238}
   - component: {fileID: 281393240}
   - component: {fileID: 281393239}
+  - component: {fileID: 281393241}
   m_Layer: 0
   m_Name: TaskPoint (9)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,6 +716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &281393240
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -728,6 +755,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &281393241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281393237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 4109937235
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &343954146
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,9 +783,10 @@ GameObject:
   - component: {fileID: 343954147}
   - component: {fileID: 343954149}
   - component: {fileID: 343954148}
+  - component: {fileID: 343954150}
   m_Layer: 0
   m_Name: TaskPoint (10)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,6 +818,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &343954149
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -808,6 +857,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &343954150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343954146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 355342928
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &372763227
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,71 +6019,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &493378439
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 493378440}
-  - component: {fileID: 493378442}
-  - component: {fileID: 493378441}
-  m_Layer: 0
-  m_Name: TaskCompletionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &493378440
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493378439}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1262120663}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &493378441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493378439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 1748490690
-  _assetId: 0
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
---- !u!114 &493378442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493378439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e42200130826b4aa0b09f195fadd47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,7 +6030,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420034}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6111,19 +6111,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1126805899}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 065087b74cfc14e4caec0ade5670a728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 258482781815488058, guid: b009205e35b62fb4ca37ba34ef864cda, type: 3}
 --- !u!1 &546421060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,7 +6381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &758652124
@@ -6707,7 +6694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852531744
@@ -6828,7 +6815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 65}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916992879
@@ -6924,9 +6911,10 @@ GameObject:
   - component: {fileID: 957764616}
   - component: {fileID: 957764618}
   - component: {fileID: 957764617}
+  - component: {fileID: 957764619}
   m_Layer: 0
   m_Name: TaskPoint (1)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6958,6 +6946,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &957764618
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6993,6 +6985,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &957764619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957764615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2560520322
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!114 &1043796836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6965384657050692511, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
@@ -7145,9 +7154,10 @@ GameObject:
   - component: {fileID: 1138382019}
   - component: {fileID: 1138382021}
   - component: {fileID: 1138382020}
+  - component: {fileID: 1138382022}
   m_Layer: 0
   m_Name: TaskPoint (16)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7179,6 +7189,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1138382021
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7214,6 +7228,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1138382022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138382018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 227304975
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1001 &1160968675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7234,11 +7265,19 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2539526572297946688, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3090800123293252797, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
       propertyPath: m_Name
       value: PopUp
       objectReference: {fileID: 0}
     - target: {fileID: 3090800123293252797, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130205999969568192, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -7321,6 +7360,10 @@ PrefabInstance:
     - target: {fileID: 4207263093865514156, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601459253995234573, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5393492837791078620, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
       propertyPath: m_IsActive
@@ -7438,6 +7481,10 @@ PrefabInstance:
       propertyPath: multipleChoiceSection
       value: 
       objectReference: {fileID: 151496524}
+    - target: {fileID: 8465511606037498033, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8723562127396861308, guid: 8a60dfa7120d1a5e899badba5e5d492d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -7527,8 +7574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 128}
-  m_SizeDelta: {x: 520, y: 50}
+  m_AnchoredPosition: {x: 0, y: 164}
+  m_SizeDelta: {x: 608, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173015723
 MonoBehaviour:
@@ -7559,8 +7606,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281545523
-  m_fontColor: {r: 0.20000002, g: 0.20000002, b: 0.20000002, a: 1}
+    rgba: 4279092757
+  m_fontColor: {r: 0.08235294, g: 0.77647066, b: 0.050980397, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7577,8 +7624,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7837,7 +7884,6 @@ Transform:
   - {fileID: 804565847}
   - {fileID: 2112995327}
   - {fileID: 1095910726}
-  - {fileID: 493378440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1282588233
@@ -7851,9 +7897,10 @@ GameObject:
   - component: {fileID: 1282588234}
   - component: {fileID: 1282588236}
   - component: {fileID: 1282588235}
+  - component: {fileID: 1282588237}
   m_Layer: 0
   m_Name: TaskPoint (5)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7885,6 +7932,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1282588236
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7920,6 +7971,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1282588237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282588233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 363277219
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1296586005
 GameObject:
   m_ObjectHideFlags: 0
@@ -7931,9 +7999,10 @@ GameObject:
   - component: {fileID: 1296586006}
   - component: {fileID: 1296586008}
   - component: {fileID: 1296586007}
+  - component: {fileID: 1296586009}
   m_Layer: 0
   m_Name: TaskPoint (15)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7965,6 +8034,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1296586008
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8000,6 +8073,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1296586009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296586005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3681090064
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1322744559
 GameObject:
   m_ObjectHideFlags: 0
@@ -8036,7 +8126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 0, y: -125}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1322744561
@@ -8305,9 +8395,10 @@ GameObject:
   - component: {fileID: 1418353291}
   - component: {fileID: 1418353293}
   - component: {fileID: 1418353292}
+  - component: {fileID: 1418353294}
   m_Layer: 0
   m_Name: TaskPoint (3)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8339,6 +8430,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1418353293
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8374,6 +8469,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1418353294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418353290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 858074543
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1528511000
 GameObject:
   m_ObjectHideFlags: 0
@@ -8587,9 +8699,10 @@ GameObject:
   - component: {fileID: 1592448481}
   - component: {fileID: 1592448483}
   - component: {fileID: 1592448482}
+  - component: {fileID: 1592448484}
   m_Layer: 0
   m_Name: TaskPoint (17)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8621,6 +8734,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1592448483
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8656,6 +8773,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1592448484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592448480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 122076760
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1624194721
 GameObject:
   m_ObjectHideFlags: 0
@@ -8667,9 +8801,10 @@ GameObject:
   - component: {fileID: 1624194722}
   - component: {fileID: 1624194724}
   - component: {fileID: 1624194723}
+  - component: {fileID: 1624194725}
   m_Layer: 0
   m_Name: TaskPoint (2)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8701,6 +8836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1624194724
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8736,6 +8875,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1624194725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624194721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2013912645
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1633722393
 GameObject:
   m_ObjectHideFlags: 0
@@ -8862,9 +9018,10 @@ GameObject:
   - component: {fileID: 1656767972}
   - component: {fileID: 1656767974}
   - component: {fileID: 1656767973}
+  - component: {fileID: 1656767975}
   m_Layer: 0
   m_Name: TaskPoint (14)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8896,6 +9053,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1656767974
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8931,6 +9092,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1656767975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656767971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3991874401
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1732902508
 GameObject:
   m_ObjectHideFlags: 0
@@ -8942,9 +9120,10 @@ GameObject:
   - component: {fileID: 1732902509}
   - component: {fileID: 1732902511}
   - component: {fileID: 1732902510}
+  - component: {fileID: 1732902512}
   m_Layer: 0
   m_Name: TaskPoint (7)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8976,6 +9155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1732902511
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9011,6 +9194,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1732902512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732902508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2349067254
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1787681166
 GameObject:
   m_ObjectHideFlags: 0
@@ -9022,9 +9222,10 @@ GameObject:
   - component: {fileID: 1787681167}
   - component: {fileID: 1787681169}
   - component: {fileID: 1787681168}
+  - component: {fileID: 1787681170}
   m_Layer: 0
   m_Name: TaskPoint (13)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9056,6 +9257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1787681169
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9091,6 +9296,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1787681170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787681166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 442011067
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1793412147
 GameObject:
   m_ObjectHideFlags: 0
@@ -9109,7 +9331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1793412148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9453,9 +9675,10 @@ GameObject:
   - component: {fileID: 1815845937}
   - component: {fileID: 1815845939}
   - component: {fileID: 1815845938}
+  - component: {fileID: 1815845940}
   m_Layer: 0
   m_Name: TaskPoint (8)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9487,6 +9710,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1815845939
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9522,6 +9749,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1815845940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815845936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3281884307
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1837513945
 GameObject:
   m_ObjectHideFlags: 0
@@ -14619,9 +14863,10 @@ GameObject:
   - component: {fileID: 1900590886}
   - component: {fileID: 1900590888}
   - component: {fileID: 1900590887}
+  - component: {fileID: 1900590889}
   m_Layer: 0
   m_Name: TaskPoint (6)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14653,6 +14898,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1900590888
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14688,6 +14937,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1900590889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900590885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 4256062557
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1947201245
 GameObject:
   m_ObjectHideFlags: 0
@@ -14699,9 +14965,10 @@ GameObject:
   - component: {fileID: 1947201246}
   - component: {fileID: 1947201248}
   - component: {fileID: 1947201247}
+  - component: {fileID: 1947201249}
   m_Layer: 0
   m_Name: TaskPoint (11)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14733,6 +15000,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &1947201248
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -14768,6 +15039,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1947201249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947201245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 595412024
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &1961384253
 GameObject:
   m_ObjectHideFlags: 0
@@ -24491,9 +24779,10 @@ GameObject:
   - component: {fileID: 2069949530}
   - component: {fileID: 2069949532}
   - component: {fileID: 2069949531}
+  - component: {fileID: 2069949533}
   m_Layer: 0
   m_Name: TaskPoint (12)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24525,6 +24814,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &2069949532
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -24560,6 +24853,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2069949533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069949529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1231018416
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &2090361323
 GameObject:
   m_ObjectHideFlags: 0
@@ -24571,9 +24881,10 @@ GameObject:
   - component: {fileID: 2090361324}
   - component: {fileID: 2090361326}
   - component: {fileID: 2090361325}
+  - component: {fileID: 2090361327}
   m_Layer: 0
   m_Name: TaskPoint (4)
-  m_TagString: Untagged
+  m_TagString: TaskTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24605,6 +24916,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69d395ab80b28149af46b780f2d71f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  aura: {fileID: 0}
 --- !u!58 &2090361326
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -24640,6 +24955,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2090361327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090361323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 872540597
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &2112995326
 GameObject:
   m_ObjectHideFlags: 0

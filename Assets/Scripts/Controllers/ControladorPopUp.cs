@@ -5,6 +5,7 @@ using Mirror;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 public class ControladorPopUp : NetworkBehaviour
 {
@@ -14,6 +15,7 @@ public class ControladorPopUp : NetworkBehaviour
     private string currentTaskType;
     private string currentTaskData;
     private LocalDatabaseManager localDatabaseManager;
+    private Button correctButton; // Añadir color al botón correcto
 
     private void Start()
     {
@@ -125,6 +127,11 @@ public class ControladorPopUp : NetworkBehaviour
                 Debug.LogError("Texto de respuesta no encontrado en el botón de respuesta " + (i + 1));
             }
 
+            // Referencia al botón correcto
+            if (i == question.CorrectAnswerIndex)
+            {
+                correctButton = answerButton; // Guarda el valor del botón correcto
+            }
             // Agregar listeners para las respuestas
             int index = i; // Evitar problemas con la variable capturada
             answerButton.onClick.RemoveAllListeners();
@@ -132,36 +139,60 @@ public class ControladorPopUp : NetworkBehaviour
         }
     }
 
-
-
+    // Verifica la respuesta correcta
     public void ResponderOpcion(int selectedIndex, int correctIndex)
     {
         bool isCorrect = selectedIndex == correctIndex;
         Debug.Log($"Opción seleccionada: {selectedIndex}, Es correcta: {isCorrect}");
+
+        // Cambiar el color del texto del botón correcto a verde
+        if (correctButton != null)
+        {
+            var answerTextTransform = correctButton.transform.Find("answer" + (correctIndex + 1) + "Text");
+
+            if (answerTextTransform != null)
+            {
+                var answerText = answerTextTransform.GetComponent<TextMeshProUGUI>();
+
+                // Si la respuesta es correcta, cambiar a verde
+                if (isCorrect && answerText != null)
+                {
+                    answerText.color = Color.green; // Cambia el color del texto a verde
+                }
+            }
+        }
+
+        // Cambiar el color del texto del botón incorrecto a rojo
+        if (!isCorrect)
+        {
+            var selectedButton = multipleChoiceSection.transform.Find("Answers").GetChild(selectedIndex);
+            var selectedTextTransform = selectedButton?.Find("answer" + (selectedIndex + 1) + "Text");
+            var selectedText = selectedTextTransform?.GetComponent<TextMeshProUGUI>();
+
+            if (selectedText != null)
+            {
+                selectedText.color = Color.red; // Cambia el color del texto a rojo
+            }
+        }
+
         if (isLocalPlayer)
         {
             CmdSendAnswer(isCorrect);
         }
-        if (isCorrect)
-        {
-            CompletarTarea();
-        }
-        OcultarPopUp();
+
+        // Iniciar la coroutine para ocultar el popup
+        StartCoroutine(RestoreButtonColorsAndHide());
     }
 
     [Command]
     private void CmdSendAnswer(bool isCorrect)
     {
         Debug.Log($"Respuesta recibida en el servidor: {(isCorrect ? "Correcta" : "Incorrecta")}");
-        // Implementa aquí la lógica adicional del servidor si es necesario
-        // se supone revisa directamente desde la base,el servidor no tiene que ver, lo unico que hará 
-        // el servidor el recibir afirmativos subidas de puntos,y sincronizar
     }
 
     public void SetupMatchingTask(Question question)
     {
         // Implementa la lógica para configurar la tarea de emparejamiento aquí
-        // Usa la información de 'question' en lugar de 'taskData'
         SetText(matchingSection, "Term1Text1", "Término 1");
         SetText(matchingSection, "Term2Text1", "Emparejar 1");
     }
@@ -169,7 +200,6 @@ public class ControladorPopUp : NetworkBehaviour
     public void SetupSequenceTask(Question question)
     {
         // Implementa la lógica para configurar la tarea de secuencia aquí
-        // Usa la información de 'question' en lugar de 'taskData'
         var stepTexts = sequenceSection.GetComponentsInChildren<TextMeshProUGUI>();
         for (int i = 0; i < stepTexts.Length; i++)
             stepTexts[i].text = $"Paso {i + 1}";
@@ -193,7 +223,32 @@ public class ControladorPopUp : NetworkBehaviour
         popUp.SetActive(false);
         currentTaskType = null;
         currentTaskData = null;
-        SetSectionsActive(false); // También desactiva todas las secciones
+        SetSectionsActive(false);
+    }
+
+    private IEnumerator RestoreButtonColorsAndHide()
+    {
+        yield return new WaitForSeconds(2); // retraso de 2 segundos
+
+        // Restaurar color original del texto del botón (hex 323232) para todos los textos de respuesta
+        var answerTransform = multipleChoiceSection.transform.Find("Answers");
+
+        if (answerTransform != null)
+        {
+            var answerButtons = answerTransform.GetComponentsInChildren<Button>();
+            foreach (var button in answerButtons)
+            {
+                var index = Array.IndexOf(answerButtons, button); // Obtener el índice del botón
+                var answerTextTransform = button.transform.Find("answer" + (index + 1) + "Text");
+                var answerText = answerTextTransform?.GetComponent<TextMeshProUGUI>();
+                if (answerText != null)
+                {
+                    answerText.color = new Color32(50, 50, 50, 255); // Color original (hex 323232)
+                }
+            }
+        }
+
+        OcultarPopUp();
     }
 
     private void SetSectionsActive(bool active)
@@ -207,5 +262,16 @@ public class ControladorPopUp : NetworkBehaviour
     {
         var textComponent = section.transform.Find(childName)?.GetComponent<TextMeshProUGUI>();
         if (textComponent != null) textComponent.text = text;
+    }
+
+    internal void ShowTaskPopup(SyncVarPlayers playerSyncVar, string taskType, string taskData)
+    {
+        MostrarPopUp(playerSyncVar, taskType, taskData);
+    }
+
+    // Método para ocultar el popup
+    public void HideTaskPopup()
+    {
+        OcultarPopUp();
     }
 }

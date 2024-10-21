@@ -81,7 +81,7 @@ public class PlayerControler : NetworkBehaviour
         if (isLocalPlayer)
         {
             HandleInput();
-            HandlePopUpInput();
+
         }
 
         UpdateAnimation();
@@ -215,21 +215,10 @@ public class PlayerControler : NetworkBehaviour
         }
     }
 
-    
 
-    public void HandlePopUpInput()
-    {
-        if (controladorPopUp != null && isNearTaskTrigger)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                // Asegúrate de pasar el SyncVarPlayers adecuado si es necesario
-                var syncVarPlayers = GetComponent<SyncVarPlayers>();
-                controladorPopUp.MostrarPopUp(syncVarPlayers, "MultipleChoice", "Respuesta1;Respuesta2;Respuesta3;Respuesta4");
-                isNearTaskTrigger = false; // Desactivar la interacción después de usarla
-            }
-        }
-    }
+
+
+
 
     public void SetNearTaskTrigger(bool isNear)
     {
@@ -244,6 +233,43 @@ public class PlayerControler : NetworkBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (isLocalPlayer && other.CompareTag("TaskTrigger"))
+        {
+            SetNearTaskTrigger(true);
+            OpenPopUp();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (isLocalPlayer && other.CompareTag("TaskTrigger"))
+        {
+            SetNearTaskTrigger(false);
+            ClosePopUp();
+        }
+    }
+
+
+    private void OpenPopUp()
+    {
+        if (controladorPopUp != null)
+        {
+            var syncVarPlayers = GetComponent<SyncVarPlayers>();
+            controladorPopUp.MostrarPopUp(syncVarPlayers, "MultipleChoice", "Respuesta1;Respuesta2;Respuesta3;Respuesta4");
+        }
+    }
+
+    private void ClosePopUp()
+    {
+        if (controladorPopUp != null)
+        {
+            controladorPopUp.OcultarPopUp();
+        }
+    }
+
+
+
 
 }

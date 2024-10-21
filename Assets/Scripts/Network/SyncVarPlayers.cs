@@ -1,5 +1,4 @@
 using Mirror;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,14 +7,19 @@ public class SyncVarPlayers : NetworkBehaviour
 {
     [Header("UI Elements")]
     [SerializeField] private Slider taskSlider;
-    private const int maxTasks = 10;
-    [SerializeField] private TextMeshProUGUI displayNameTMP = null;
+    [SerializeField] private TextMeshProUGUI displayNameTMP;
 
-    [Header("Sync Variables")]
+    private const int maxTasks = 10;
+
     [SyncVar(hook = nameof(OnTaskChange))]
-    private int task_completed = 0;
+    private int taskCompleted = 0;
+
     [SyncVar(hook = nameof(OnNickNameChange))]
     private string nickName = "";
+
+    // Variable para indicar si el juego está en curso
+    [SyncVar]
+    private bool isGameActive = true;
 
     private void Start()
     {
@@ -29,10 +33,9 @@ public class SyncVarPlayers : NetworkBehaviour
             }
         }
 
-        // Inicializa el slider al comienzo
         InitializeSlider();
 
-        // Actualiza el nombre en la UI si es local
+        // Actualiza el nombre en la UI si es el jugador local
         if (isLocalPlayer && displayNameTMP != null)
         {
             displayNameTMP.text = nickName;
@@ -41,8 +44,9 @@ public class SyncVarPlayers : NetworkBehaviour
 
     private void Update()
     {
-        // Permite completar tareas si es el jugador local y se presiona la tecla T
-        if (isLocalPlayer && Input.GetKeyDown(KeyCode.T))
+        // Permite completar tareas solo si el juego está activo y es el jugador local
+        //Usado para pruebas
+        if (isLocalPlayer && isGameActive && Input.GetKeyDown(KeyCode.T))
         {
             CompleteTask();
         }
@@ -51,7 +55,7 @@ public class SyncVarPlayers : NetworkBehaviour
     [Server]
     public void SetTaskCompleted(int taskCompleted)
     {
-        task_completed = Mathf.Clamp(taskCompleted, 0, maxTasks);
+        this.taskCompleted = Mathf.Clamp(taskCompleted, 0, maxTasks);
     }
 
     [Command]
@@ -62,7 +66,7 @@ public class SyncVarPlayers : NetworkBehaviour
 
     public void CompleteTask()
     {
-        CmdSetTaskCompleted(task_completed + 1);
+        CmdSetTaskCompleted(taskCompleted + 1);
     }
 
     private void OnTaskChange(int oldTaskCompleted, int newTaskCompleted)
@@ -75,7 +79,7 @@ public class SyncVarPlayers : NetworkBehaviour
             CmdPlayerCompletedAllTasks();
         }
     }
-    
+
     private void OnNickNameChange(string oldNickName, string newNickName)
     {
         if (displayNameTMP != null)
@@ -95,7 +99,7 @@ public class SyncVarPlayers : NetworkBehaviour
         if (taskSlider != null)
         {
             taskSlider.maxValue = maxTasks;
-            taskSlider.value = task_completed;
+            taskSlider.value = taskCompleted;
             taskSlider.interactable = false; // Desactiva la interactividad para los jugadores
         }
     }
@@ -110,12 +114,10 @@ public class SyncVarPlayers : NetworkBehaviour
 
     public void UpdateDisplayName(string newName)
     {
-        // Actualiza el nombre en la UI
         if (displayNameTMP != null)
         {
             displayNameTMP.text = newName;
         }
-        // También actualiza la SyncVar en la red si es necesario
         CmdSetNickName(newName);
     }
 
@@ -123,5 +125,18 @@ public class SyncVarPlayers : NetworkBehaviour
     private void CmdSetNickName(string newName)
     {
         nickName = newName;
+    }
+
+    [Server]
+    public void SetGameActive(bool active)
+    {
+        isGameActive = active;
+    }
+
+    private int attemptsRemaining = 3; // Por ejemplo
+
+    public int GetAttemptsRemaining()
+    {
+        return attemptsRemaining;
     }
 }
